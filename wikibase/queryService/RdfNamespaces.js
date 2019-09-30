@@ -6,15 +6,14 @@ wikibase.queryService.RdfNamespaces = {};
 	'use strict';
 
 	RdfNamespaces.NAMESPACE_SHORTCUTS = {
-		Wikidata: {
-			wikibase: 'http://wikiba.se/ontology#',
-			wd: 'http://www.wikidata.org/entity/',
-			wdt: 'http://www.wikidata.org/prop/direct/',
-			wdtn: 'http://www.wikidata.org/prop/direct-normalized/',
-			wds: 'http://www.wikidata.org/entity/statement/',
-			p: 'http://www.wikidata.org/prop/',
-			wdref: 'http://www.wikidata.org/reference/',
-			wdv: 'http://www.wikidata.org/value/',
+    FNE: {
+			fne: 'https://poc-fne.abes.fr/entity/',
+			fnet: 'https://poc-fne.abes.fr/prop/direct/',
+			fnetn: 'https://poc-fne.abes.fr/prop/direct-normalized/',
+			fnes: 'https://poc-fne.abes.fr/entity/statement/',
+			p: 'https://poc-fne.abes.fr/prop/',
+			fneref: 'https://poc-fne.abes.fr/reference/',
+			fnev: 'https://poc-fne.abes.fr/value/',
 			ps: 'http://www.wikidata.org/prop/statement/',
 			psv: 'http://www.wikidata.org/prop/statement/value/',
 			psn: 'http://www.wikidata.org/prop/statement/value-normalized/',
@@ -24,6 +23,23 @@ wikibase.queryService.RdfNamespaces = {};
 			pr: 'http://www.wikidata.org/prop/reference/',
 			prv: 'http://www.wikidata.org/prop/reference/value/',
 			prn: 'http://www.wikidata.org/prop/reference/value-normalized/',
+			fnedata: 'https://poc-fne.abes.fr/wiki/Special:EntityData/'
+    },
+		Wikidata: {
+			wikibase: 'http://wikiba.se/ontology#',
+			wd: 'http://www.wikidata.org/entity/',
+			wdt: 'http://www.wikidata.org/prop/direct/',
+			wdtn: 'http://www.wikidata.org/prop/direct-normalized/',
+			wds: 'http://www.wikidata.org/entity/statement/',
+			wdp: 'http://www.wikidata.org/prop/',
+			wdref: 'http://www.wikidata.org/reference/',
+			wdv: 'http://www.wikidata.org/value/',
+			wdps: 'http://www.wikidata.org/prop/statement/',
+			wdpsv: 'http://www.wikidata.org/prop/statement/value/',
+			wdpq: 'http://www.wikidata.org/prop/qualifier/',
+			wdpqv: 'http://www.wikidata.org/prop/qualifier/value/',
+			wdpr: 'http://www.wikidata.org/prop/reference/',
+			wdprv: 'http://www.wikidata.org/prop/reference/value/',
 			wdno: 'http://www.wikidata.org/prop/novalue/',
 			wdata: 'http://www.wikidata.org/wiki/Special:EntityData/'
 		},
@@ -49,21 +65,21 @@ wikibase.queryService.RdfNamespaces = {};
 	};
 
 	RdfNamespaces.ENTITY_TYPES = {
-		'http://www.wikidata.org/prop/direct/': 'property',
-		'http://www.wikidata.org/prop/direct-normalized/': 'property',
-		'http://www.wikidata.org/prop/': 'property',
-		'http://www.wikidata.org/prop/novalue/': 'property',
-		'http://www.wikidata.org/prop/statement/': 'property',
-		'http://www.wikidata.org/prop/statement/value/': 'property',
-		'http://www.wikidata.org/prop/statement/value-normalized/': 'property',
-		'http://www.wikidata.org/prop/qualifier/': 'property',
-		'http://www.wikidata.org/prop/qualifier/value/': 'property',
-		'http://www.wikidata.org/prop/qualifier/value-normalized/': 'property',
-		'http://www.wikidata.org/prop/reference/': 'property',
-		'http://www.wikidata.org/prop/reference/value/': 'property',
-		'http://www.wikidata.org/prop/reference/value-normalized/': 'property',
-		'http://www.wikidata.org/wiki/Special:EntityData/': 'item',
-		'http://www.wikidata.org/entity/': 'item'
+		'https://poc-fne.abes.fr/prop/direct/': 'property',
+		'https://poc-fne.abes.fr/prop/direct-normalized/': 'property',
+		'https://poc-fne.abes.fr/prop/': 'property',
+		'https://poc-fne.abes.fr/prop/novalue/': 'property',
+		'https://poc-fne.abes.fr/prop/statement/': 'property',
+		'https://poc-fne.abes.fr/prop/statement/value/': 'property',
+		'https://poc-fne.abes.fr/prop/statement/value-normalized/': 'property',
+		'https://poc-fne.abes.fr/prop/qualifier/': 'property',
+		'https://poc-fne.abes.fr/prop/qualifier/value/': 'property',
+		'https://poc-fne.abes.fr/prop/qualifier/value-normalized/': 'property',
+		'https://poc-fne.abes.fr/prop/reference/': 'property',
+		'https://poc-fne.abes.fr/prop/reference/value/': 'property',
+		'https://poc-fne.abes.fr/prop/reference/value-normalized/': 'property',
+		'https://poc-fne.abes.fr/wiki/Special:EntityData/': 'item',
+		'https://poc-fne.abes.fr/entity/': 'item'
 	};
 
 	RdfNamespaces.ALL_PREFIXES = $.map( RdfNamespaces.NAMESPACE_SHORTCUTS, function ( n ) {
@@ -73,12 +89,12 @@ wikibase.queryService.RdfNamespaces = {};
 	}, {} );
 
 	RdfNamespaces.STANDARD_PREFIXES = {
-		wd: 'PREFIX wd: <http://www.wikidata.org/entity/>',
-		wdt: 'PREFIX wdt: <http://www.wikidata.org/prop/direct/>',
+		fne: 'PREFIX fne: <https://poc-fne.abes.fr/entity/>',
+		fnet: 'PREFIX fnet: <https://poc-fne.abes.fr/prop/direct/>',
 		wikibase: 'PREFIX wikibase: <http://wikiba.se/ontology#>',
-		p: 'PREFIX p: <http://www.wikidata.org/prop/>',
-		ps: 'PREFIX ps: <http://www.wikidata.org/prop/statement/>',
-		pq: 'PREFIX pq: <http://www.wikidata.org/prop/qualifier/>',
+		p: 'PREFIX p: <https://poc-fne.abes.fr/prop/>',
+		ps: 'PREFIX ps: <https://poc-fne.abes.fr/prop/statement/>',
+		pq: 'PREFIX pq: <https://poc-fne.abes.fr/prop/qualifier/>',
 		rdfs: 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>',
 		bd: 'PREFIX bd: <http://www.bigdata.com/rdf#>'
 	};
