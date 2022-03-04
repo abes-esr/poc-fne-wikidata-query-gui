@@ -1,4 +1,6 @@
-# Wikibase Query Service GUI
+# poc-fne-wikidata-query-gui
+
+**Ce dépôt n'est plus maintenu depuis fin 2019 : il a permis de réaliser une preuve de concept basé sur le logiciel wikibase dans le but de construire l'application national FNE dans laquelle la BnF et l'Abes co-produiront leurs entités**
 
 This repository contains the GUI for the [Wikidata Query Service](https://query.wikidata.org/).
 
